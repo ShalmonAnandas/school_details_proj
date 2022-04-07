@@ -9,6 +9,8 @@ package school_details_code;
  *
  * @author Dell
  */
+import java.sql.*;
+import javax.swing.JOptionPane;
 public class frame2 extends javax.swing.JFrame {
 
     /**
@@ -52,6 +54,11 @@ public class frame2 extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +124,51 @@ public class frame2 extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //getting values from 
+        String user_name = jTextField1.getText();
+        String user_pass = jTextField2.getText();
+        String pass_conf = jTextField3.getText();
+        
+        if(user_pass.equals(pass_conf)){
+            try{
+                //initialize jdbc driver
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                System.out.println("Registered");
+                
+                //connecting with mysql database
+                Connection con;
+                Statement smt;
+                con=DriverManager.getConnection("jdbc:mysql://localhost/student_details","root","Anandas!#66");
+                System.out.println("Connection Successful");
+                
+                //creating statement for inserting values in database
+                smt=con.createStatement();
+                String sql = "insert into login_details values(NULL,'" + user_name + "', '" + user_pass +"')";
+                smt.executeUpdate(sql);
+
+                //close statment and con
+                smt.close();
+                con.close();
+                
+                //transition to next frame
+                new frame3().setVisible(true);
+                frame2.this.setVisible(false);
+                }
+                //catch statements
+                catch(SQLException se){
+                    se.printStackTrace();
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                }
+        }
+        //error handling if passwords dont match
+        else{
+            JOptionPane.showMessageDialog(jButton1, "PASSWORDS DONT MATCH");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

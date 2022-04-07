@@ -9,6 +9,8 @@ package school_details_code;
  *
  * @author nasha
  */
+import java.sql.*;
+import javax.swing.JOptionPane;
 public class frame4 extends javax.swing.JFrame {
 
     /**
@@ -40,6 +42,11 @@ public class frame4 extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Complete Student Details");
@@ -130,6 +137,32 @@ public class frame4 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        frame1.sr_no
+        String query = "select * from student_details where sr_no=" + sr_no;
+        
+        try{
+            //initialize jdbc driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Registered");
+            
+            //connecting with mysql database
+            Connection con;
+            Statement smt;
+            con=DriverManager.getConnection("jdbc:mysql://localhost/student_details","root","Anandas!#66");
+            System.out.println("Connection Successful");
+            
+            
+        }
+        //catch statements
+        catch(SQLException se){
+            se.printStackTrace();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formComponentShown
 
     /**
      * @param args the command line arguments
