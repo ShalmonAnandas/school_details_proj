@@ -202,8 +202,8 @@ public class frame3 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //getting values from 
         String stu_name = jTextField1.getText() +" "+ jTextField5.getText();
-        String fat_name = jTextField2.getText();
-        String mot_name = jTextField3.getText();
+        String fat_name = jTextField2.getText() + " "+ jTextField5.getText();
+        String mot_name = jTextField3.getText() + " "+ jTextField5.getText();
         String course = buttonGroup1.getSelection().getActionCommand();
         String grade = jTextField4.getText();
         
@@ -228,7 +228,7 @@ public class frame3 extends javax.swing.JFrame {
         con.close();
         
         //transition to next frame
-        new frame4().setVisible(true);
+        new frame4(stu_name,fat_name,mot_name,course,grade).setVisible(true);
         frame3.this.setVisible(false);
         }
         //catch statements

@@ -25,7 +25,77 @@ public class frame1 extends javax.swing.JFrame {
     public frame1() {
         initComponents();
     }
-
+    
+    public void frame_1(String user_name, String user_pass){
+        //declaring variables
+        int sr_no = 0;
+        String stu_name = null;
+        String fat_name = null;
+        String mot_name = null;
+        String course = null;
+        String grade = null;
+        
+        //start of code
+        try{
+            //initialize jdbc driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Registered");
+            
+            //connecting with mysql database
+            Connection con;
+            con=DriverManager.getConnection("jdbc:mysql://localhost/student_details","root","Anandas!#66");
+            System.out.println("Connection Successful");
+            Statement smt;
+            smt = con.createStatement();
+            
+            //create statement to retrieve sr_no
+            String query = "SELECT sr_no, user_pass FROM login_details WHERE user_name='" + user_name+"'";
+            
+            //execute retreive statement
+            ResultSet rs = smt.executeQuery(query);
+            
+            //check if record exists
+            System.out.println("Records Exists = " + rs.next());
+            
+            //assign the sr_no value
+            sr_no = rs.getInt("sr_no");
+            
+            //close the first resultset
+            rs.close();
+            
+            //show which record is being accessed
+            System.out.println(sr_no);
+            
+            //make statement to retrieve data from student_details
+            String sql = "SELECT stu_name, fat_name, mot_name, course, grade from student_details WHERE sr_no='"+sr_no+"'";
+            
+            //execute retrieve statement
+            ResultSet rs2 = smt.executeQuery(sql);
+            
+            //confirmation
+            System.out.println("data retrieved");
+            
+            //put the data into variables
+            rs2.next();
+            stu_name = rs2.getString("stu_name");
+            fat_name = rs2.getString("fat_name");
+            mot_name = rs2.getString("mot_name");
+            course = rs2.getString("course");
+            grade = rs2.getString("grade");
+            
+            new frame4(stu_name, fat_name, mot_name, course, grade).setVisible(true);
+            setVisible(false);
+        }
+        //catch statements
+        catch(SQLException se){
+            se.printStackTrace();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,50 +198,10 @@ public class frame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String user_name = jTextField1.getText();
-        String user_pass = jTextField2.getText();
-        
-        String query = "select sr_no, user_name, user_pass from login_details where user_name='" + user_name+"'";
-        try{
-            //initialize jdbc driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Registered");
-            
-            //connecting with mysql database
-            Connection con;
-            con=DriverManager.getConnection("jdbc:mysql://localhost/student_details","root","Anandas!#66");
-            System.out.println("Connection Successful");
-            Statement smt;
-            smt = con.createStatement();
-            ResultSet rs = smt.executeQuery(query);
-            while(rs.next()){
-            //System.out.println("SR_NO: " + rs.getInt());
-            int sr_no = (rs.getInt("sr_no"));
-            
-            String sql = "select sr_no, stu_name, fat_name, mot_name, course, grade from student_details where sr_no+'"+sr_no+"'";
-            ResultSet rs2 = smt.executeQuery(sql);
-            while(rs2.next()){
-                String stu_name = (rs.getString("stu_name"));
-                String fat_name = (rs.getString("fat_name"));
-                String mot_name = (rs.getString("mot_name"));
-                String course = (rs.getString("course"));
-                String grade = (rs.getString("grade"));
-            }
-            
-                JLabel setText = frame4.jLabel7.setText(stu_name);
-            
-            
-            }
-        }
-        //catch statements
-        catch(SQLException se){
-            se.printStackTrace();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        } 
+        frame1 fr1 =  new frame1();
+        fr1.frame_1(jTextField1.getText(), jTextField2.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */

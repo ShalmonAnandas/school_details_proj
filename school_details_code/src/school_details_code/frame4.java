@@ -19,6 +19,14 @@ public class frame4 extends javax.swing.JFrame {
     public frame4() {
         initComponents();
     }
+    public frame4(String name, String father, String mother, String course, String grade) {
+        initComponents();
+        jLabel7.setText(name);
+        jLabel8.setText(father);
+        jLabel9.setText(mother);
+        jLabel10.setText(course);
+        jLabel11.setText(grade);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -135,12 +143,14 @@ public class frame4 extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        jLabel7.getAccessibleContext().setAccessibleDescription("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        frame1.sr_no
-        String query = "select * from student_details where sr_no=" + sr_no;
+        //frame1.sr_no
+        //String query = "select * from student_details where sr_no=" + sr_no;
         
         try{
             //initialize jdbc driver
@@ -153,7 +163,8 @@ public class frame4 extends javax.swing.JFrame {
             con=DriverManager.getConnection("jdbc:mysql://localhost/student_details","root","Anandas!#66");
             System.out.println("Connection Successful");
             
-            
+            frame1 fr1 = new frame1();
+  
         }
         //catch statements
         catch(SQLException se){
