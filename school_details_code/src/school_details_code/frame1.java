@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -198,8 +199,58 @@ public class frame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        frame1 fr1 =  new frame1();
-        fr1.frame_1(jTextField1.getText(), jTextField2.getText());
+        String user_name = jTextField1.getText();
+        String user_pass = jTextField2.getText();
+        String pass = null;
+        try{
+            //initialize jdbc driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Registered");
+            
+            //connecting with mysql database
+            Connection con;
+            con=DriverManager.getConnection("jdbc:mysql://localhost/student_details","root","Anandas!#66");
+            System.out.println("Connection Successful");
+            Statement smt;
+            smt = con.createStatement();
+            
+            //create statement to retrieve sr_no
+            String query = "SELECT sr_no, user_pass FROM login_details WHERE user_name='" + user_name+"'";
+            
+            //execute retreive statement
+            ResultSet rs = smt.executeQuery(query);
+            
+            //check if record exists
+            System.out.println("Records Exists = " + rs.next());
+            
+            //assign the sr_no value
+            pass = rs.getString("user_pass");
+            
+            //close the first resultset
+            rs.close();
+            
+            //show which record is being accessed
+            System.out.println(pass);
+            
+            //confirmation
+            System.out.println("data retrieved");
+        }
+        //catch statements
+        catch(SQLException se){
+            se.printStackTrace();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        if(user_pass.equals(pass)){
+            frame1 fr1 =  new frame1();
+            fr1.frame_1(user_name, user_pass);
+        }
+        else{
+            JOptionPane.showMessageDialog(jButton1, "The username or password is incorrect");
+        }
+ 
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
