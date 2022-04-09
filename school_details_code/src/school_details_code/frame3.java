@@ -228,7 +228,7 @@ public class frame3 extends javax.swing.JFrame {
         con.close();
         
         //transition to next frame
-        new frame4(stu_name,fat_name,mot_name,course,grade).setVisible(true);
+        new marks().setVisible(true);
         frame3.this.setVisible(false);
         }
         //catch statements

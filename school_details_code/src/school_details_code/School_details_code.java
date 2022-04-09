@@ -15,7 +15,7 @@ public class School_details_code {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Majje karo");
+        new frame1().setVisible(true);
     }
     
 }
