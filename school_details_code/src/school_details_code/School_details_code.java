@@ -15,7 +15,7 @@ public class School_details_code {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new frame1().setVisible(true);
+        new login_select().setVisible(true);
     }
     
 }
