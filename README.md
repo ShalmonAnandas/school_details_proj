@@ -9,7 +9,7 @@
 1. Clone this repository
 2. [Make database in MySQL](#instructions-to-make-the-mysql-database)
 3. Import project into NetBeans
-4. Make changes to sql login id and password in the whole code.
+4. Make changes to sql login id and password in the [whole code](#where-to-make-changes-in-files).
 4. Run project from file : School_details_code.java
 
 ## Instructions to make the MySQL database
@@ -31,3 +31,11 @@ CREATE TABLE admin_login(admin_name varchar(40), admin_pass varchar(40));
 ```
 CREATE TABLE student_marks(sr_no INT NOT NULL AUTO_INCREMENT, paper1 varchar(3), paper2 varchar(3), paper3 varchar(3), paper4 varchar(3), primary key (sr_no));
 ```
+
+## Where to make changes in files
+1. ```admin_login.java  : line 125```
+2. ```frame1.java       : line 47 & 195```
+3. ```frame2.java       : line 142```
+4. ```frame3.java       : line 217```
+5. ```frame4.java       : line 44```
+6. ```marks.java        : line 154```
