@@ -1,5 +1,7 @@
 # Student Details Entry & Retrieval Portal
 
+![cover_img](https://github.com/ShalmonAnandas/school_details_proj/blob/main/school_details_code/complete_frames.png)
+
 ## Requirements
 1. This project was made in NetBeans 8.2 ```(may not be compatible with newer versions)```
 2. [MySQL version: 8.0.28](https://dev.mysql.com/downloads/file/?id=510039) ```(is not compatible with older versions)```
