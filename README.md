@@ -1,18 +1,18 @@
 # school_details_proj
 
-## Instructions
-1. This project was made in NetBeans 8.2
-2. MySQL version : 8.0.28
-3. MySQL java connector version 8.0.28 required.
+## Requirements
+1. This project was made in NetBeans 8.2 ```(may not be compatible with newer versions)```
+2. MySQL version : 8.0.28 ```(is not compatible with older versions)```
+3. MySQL java connector version 8.0.28 required. ```(is not compatible with older versions)```
 
 ## Usage Instruction
 1. Clone this repository
-2. Make database in MySQL
+2. [Make database in MySQL](#instructions-to-make-the-mysql-database)
 3. Import project into NetBeans
 4. Make changes to sql login id and password in the whole code.
 4. Run project from file : School_details_code.java
 
-## Instructions to make SQL databases
+## Instructions to make the MySQL database
 ```
 CREATE DATABASE student_details;
 ```
