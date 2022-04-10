@@ -14,10 +14,20 @@
 
 ## Instructions to make SQL databases
 ```
-1. CREATE DATABASE student_details;
-2. USE student_details;
-3. CREATE TABLE student_details(sr_no INT NOT NULL AUTO_INCREMENT, stu_name varchar(40), fat_name varchar(40), mot_name varchar(40), course varchar(40), grade varchar(2), primary key (sr_no));
-4. CREATE TABLE login_details(sr_no INT NOT NULL AUTO_INCREMENT, user_name varchar(40), user_pass varchar(40), primary key (sr_no));
-5. CREATE TABLE admin_login(admin_name varchar(40), admin_pass varchar(40));
-6. CREATE TABLE student_marks(sr_no INT NOT NULL AUTO_INCREMENT, paper1 varchar(3), paper2 varchar(3), paper3 varchar(3), paper4 varchar(3), primary key (sr_no));
+CREATE DATABASE student_details;
+```
+```
+USE student_details;
+```
+```
+CREATE TABLE student_details(sr_no INT NOT NULL AUTO_INCREMENT, stu_name varchar(40), fat_name varchar(40), mot_name varchar(40), course varchar(40), grade varchar(2), primary key (sr_no));
+```
+```
+CREATE TABLE login_details(sr_no INT NOT NULL AUTO_INCREMENT, user_name varchar(40), user_pass varchar(40), primary key (sr_no));
+```
+```
+CREATE TABLE admin_login(admin_name varchar(40), admin_pass varchar(40));
+```
+```
+CREATE TABLE student_marks(sr_no INT NOT NULL AUTO_INCREMENT, paper1 varchar(3), paper2 varchar(3), paper3 varchar(3), paper4 varchar(3), primary key (sr_no));
 ```
