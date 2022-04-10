@@ -1,4 +1,4 @@
-# school_details_proj
+# Student Details Entry & Retrieval Portal
 
 ## Requirements
 1. This project was made in NetBeans 8.2 ```(may not be compatible with newer versions)```
